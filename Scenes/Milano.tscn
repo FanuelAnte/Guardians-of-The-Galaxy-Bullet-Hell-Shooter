@@ -31,4 +31,11 @@ position = Vector2( -8, -14 )
 [node name="Position2D2" type="Position2D" parent="."]
 position = Vector2( 8, -14 )
 
+[node name="cooldown" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="shottimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
