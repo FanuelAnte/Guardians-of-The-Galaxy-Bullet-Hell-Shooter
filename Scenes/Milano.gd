@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 var bullet_scene = preload("res://Scenes/Bullet.tscn")
 
+var health = 10
+
 onready var position_2d = $Position2D
 onready var position_2_d_2 = $Position2D2
 
@@ -12,6 +14,8 @@ func _ready():
 	pass
 
 func _process(delta):
+	if health <= 0:
+		self.queue_free()
 	if Input.is_action_pressed("ui_left"):
 		vel.x = speed.x * -1
 	elif Input.is_action_pressed("ui_right"):
@@ -44,3 +48,9 @@ func fire():
 	bullet1.dir = -1
 	bullet2.dir = -1
 	
+
+
+func _on_Area2D_area_entered(area):
+	if area.is_in_group("bullets"):
+		health -= 1
+		area.queue_free()
