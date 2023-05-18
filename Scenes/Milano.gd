@@ -21,27 +21,29 @@ func _ready():
 	pass
 
 func _process(delta):
+	Globals.health = health
 #	print('shot timer' + ' ' + str(shottimer.time_left))
 #	print('heat' + ' ' + str(heat_value))
-	if heat_value 
+#	if heat_value 
 	
 	if health <= 0:
 		self.queue_free()
-	if Input.is_action_pressed("ui_left"):
+		
+	if Input.is_action_pressed("left"):
 		vel.x = speed.x * -1
-	elif Input.is_action_pressed("ui_right"):
+	elif Input.is_action_pressed("right"):
 		vel.x = speed.x * 1
 	else:
 		vel.x = 0
 	
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("up"):
 		vel.y = speed.y * -1
-	elif Input.is_action_pressed("ui_down"):
+	elif Input.is_action_pressed("down"):
 		vel.y = speed.y * 1
 	else:
 		vel.y = 0
 	
-	if Input.is_action_just_pressed("ui_select") and !over_heated:
+	if Input.is_action_just_pressed("a") and !over_heated:
 		fire()
 	
 	vel = move_and_slide(vel)
