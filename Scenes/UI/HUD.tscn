@@ -80,13 +80,13 @@ texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 6 )
 
 [node name="ABtn" type="TouchScreenButton" parent="."]
-position = Vector2( 238, 575 )
+position = Vector2( 294, 533 )
 normal = ExtResource( 11 )
 pressed = ExtResource( 8 )
 action = "a"
 
 [node name="BBtn" type="TouchScreenButton" parent="."]
-position = Vector2( 294, 533 )
+position = Vector2( 238, 575 )
 normal = ExtResource( 9 )
 pressed = ExtResource( 10 )
 action = "b"
@@ -117,3 +117,10 @@ rotation = -4.71238
 normal = ExtResource( 13 )
 pressed = ExtResource( 12 )
 action = "down"
+
+[connection signal="pressed" from="ABtn" to="." method="_on_ABtn_pressed"]
+[connection signal="pressed" from="BBtn" to="." method="_on_BBtn_pressed"]
+[connection signal="pressed" from="DPadR" to="." method="_on_DPadR_pressed"]
+[connection signal="pressed" from="DPadL" to="." method="_on_DPadL_pressed"]
+[connection signal="pressed" from="DPadU" to="." method="_on_DPadU_pressed"]
+[connection signal="pressed" from="DPadD" to="." method="_on_DPadD_pressed"]

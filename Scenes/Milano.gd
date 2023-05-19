@@ -9,12 +9,11 @@ onready var position_2_d_2 = $Position2D2
 onready var shottimer = $shottimer
 onready var cooldown = $cooldown
 
-
-var speed = Vector2(100, 100)
+var speed = Vector2(150, 150)
 var vel = Vector2.ZERO
+
 var over_heated = false
 
-var time_between_shots = 0
 var heat_value = 0
 
 func _ready():
@@ -22,10 +21,16 @@ func _ready():
 
 func _process(delta):
 	Globals.health = health
-#	print('shot timer' + ' ' + str(shottimer.time_left))
-#	print('heat' + ' ' + str(heat_value))
-#	if heat_value 
+	Globals.blaster_heat = heat_value
 	
+	if !over_heated:
+		if heat_value >= 10:
+			over_heated = true
+			if cooldown.time_left == 0:
+				cooldown.start()
+		else:
+			heat_value -= 1 * delta
+		
 	if health <= 0:
 		self.queue_free()
 		
@@ -51,6 +56,9 @@ func _process(delta):
 func fire():
 	if shottimer.time_left > 0:
 		heat_value += 1
+		
+	if heat_value > 0:
+		heat_value += 0.5
 	
 	shottimer.start()
 	
@@ -71,4 +79,7 @@ func _on_Area2D_area_entered(area):
 		health -= 1
 		area.queue_free()
 
-
+func _on_cooldown_timeout():
+	var tween = create_tween()
+	tween.tween_property(self, "heat_value", 0.0, 0.5)
+	over_heated = false
