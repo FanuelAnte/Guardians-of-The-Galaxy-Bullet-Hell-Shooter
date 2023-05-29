@@ -52,6 +52,7 @@ autostart = true
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 0, 17 )
 
+[connection signal="killed" from="." to="." method="_on_Nova_killed"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
