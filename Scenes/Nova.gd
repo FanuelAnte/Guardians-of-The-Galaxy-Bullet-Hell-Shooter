@@ -14,6 +14,9 @@ func _ready():
 
 
 func _process(delta):
+	if self.position.y < 128:
+		self.position.y += 50 * dir * delta
+	
 	if Input.is_action_just_pressed("ui_focus_prev"):
 		fire()
 		
@@ -22,7 +25,6 @@ func _process(delta):
 		Globals.score+=50
 		self.queue_free()
 	
-	self.position.y += 50 * dir * delta
 
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("bullets"):

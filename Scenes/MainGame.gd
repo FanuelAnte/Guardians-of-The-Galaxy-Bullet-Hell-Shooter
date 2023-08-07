@@ -10,7 +10,7 @@ func _ready():
 	pass
 
 func _process(delta):
-	background.scroll_offset.y += 500 * delta
+	background.scroll_offset.y += 900 * delta
 
 func add_enemy():
 	var enemy = enemy_scene.instance()
