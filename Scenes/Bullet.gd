@@ -1,6 +1,7 @@
 extends Area2D
 
 var dir = 0
+var is_shot_by_player = false
 
 func _ready():
 	pass # Replace with function body.

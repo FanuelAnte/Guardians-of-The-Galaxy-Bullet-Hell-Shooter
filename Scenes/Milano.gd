@@ -74,9 +74,13 @@ func fire():
 	bullet1.dir = -1
 	bullet2.dir = -1
 	
+	bullet1.is_shot_by_player = true
+	bullet2.is_shot_by_player = true
+	
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("bullets"):
 		health -= 1
+		Globals.score -= 10
 		area.queue_free()
 
 func _on_cooldown_timeout():

@@ -28,10 +28,10 @@ func _process(delta):
 
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("bullets"):
-		health -= 1
-		
-		Globals.score+=10
-		area.queue_free()
+		if area.is_shot_by_player:
+			health -= 1
+			Globals.score+=10
+			area.queue_free()
 
 
 func _on_VisibilityNotifier2D_screen_exited():
